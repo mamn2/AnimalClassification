@@ -120,7 +120,7 @@ def fit(train_set,train_labels,dev_set,n_iter,batch_size=100):
     lossData = [0] * int(len(train_labels) / batch_size)
     for i in range(n_iter):
         batchBegin = 0
-        for curBatch in range(int(len(train_labels) / batch_size)):
+        for curBatch in range(int(len(train_labels) / batch_size) - 1):
             label = train_labels[batchBegin: batchBegin + batch_size]
             image = train_set[batchBegin: batchBegin + batch_size]
             lossData[curBatch] = neuralNet.step(image, label) # heavylifting is here
