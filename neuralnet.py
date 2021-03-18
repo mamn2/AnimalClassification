@@ -51,7 +51,7 @@ class NeuralNet(nn.Module):
         self.out_size = out_size
         
         print('GELU SiLU .06')
-        self.model = nn.Sequential(nn.Linear(in_size, 24), nn.SiLU(), nn.Linear(32, out_size))
+        self.model = nn.Sequential(nn.Linear(in_size, 32), nn.SiLU(), nn.Linear(32, out_size))
 
     def set_parameters(self, params):
         """ Sets the parameters of your network.
