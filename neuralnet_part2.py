@@ -48,7 +48,7 @@ class NeuralNet(nn.Module):
         self.in_size = in_size
         self.out_size = out_size
         
-        self.model = nn.Sequential(nn.Linear(in_size, 32), nn.ReLU(), nn.Linear(32, out_size))
+        self.model = nn.Sequential(nn.Linear(in_size, 32), nn.SiLU(), nn.Linear(32, out_size))
 
     def set_parameters(self, params):
         """ Sets the parameters of your network.
@@ -82,7 +82,7 @@ class NeuralNet(nn.Module):
         @return L: total empirical risk (mean of losses) at this timestep as a float
         """
         ## optim.atoms l2 regularization
-        optimSGD = optim.SGD(self.get_parameters(), self.lrate)
+        optimSGD = optim.SGD(self.get_parameters(), self.lrate, weight_decay=0.07)
         lossData = self.loss_fn(self.forward(x), y)
         optimSGD.zero_grad()
         lossData.backward()
