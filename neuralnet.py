@@ -22,7 +22,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 
 class1 = 0
-class2 = 19
+class2 = 2
 
 class NeuralNet(nn.Module):
     def __init__(self, lrate, loss_fn, in_size, out_size):
